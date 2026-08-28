@@ -1,2 +1,2 @@
-unpack binj files
+splits a string in tokens of ramdom values
 
