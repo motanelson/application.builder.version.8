@@ -8,10 +8,16 @@
         while (true) 
         {
             i=ss.IndexOf(separator);
-            if (i == -1) break;
+            if (i == -1) 
+            {
+                Array.Resize(ref s, s.Length + 1);
+                s[s.Length - 1] = ss;
+                break;
+            } 
+               
             Array.Resize(ref s, s.Length+1);
             s[s.Length-1]=ss.Substring(0, i);
-            if (i + separator.Length >= ss.Length) break;
+            if (i + separator.Length >= ss.Length-1) break;
             ss=ss.Substring(i+separator.Length);
 
 
@@ -35,7 +41,7 @@ class splitstests
     public static void mainloop() 
     
     {
-        String s = "<!><!>0<!>01<!>012<!>0123<!>01234<!>012345<!>0123456<!>01234567<!>012345678<!>0123456789<!>";
+        String s = "<!><!>0<!>01<!>012<!>0123<!>01234<!>012345<!>0123456<!>01234567<!>012345678<!>0123456789<!>0123456789A<!>";
         String[] ss= splits.uses(s,"<!>");
         foreach (var sss in ss) 
         {
